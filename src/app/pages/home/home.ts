@@ -21,7 +21,7 @@ L.Icon.Default.mergeOptions({
 })
 export class Home implements AfterViewInit {
 
-  API_BASE = 'http://localhost:4000';
+  API_BASE = 'https://geohealth-backend-a2i9.onrender.com';
 
   map: any;
   markersLayer: any;

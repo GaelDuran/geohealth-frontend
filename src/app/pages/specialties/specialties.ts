@@ -12,7 +12,7 @@ import { Navbar } from '../../components/navbar/navbar';
 })
 export class Specialties implements OnInit {
 
-  API_BASE = 'http://localhost:4000';
+  API_BASE = 'https://geohealth-backend-a2i9.onrender.com';
 
   specialties: any[] = [];
 

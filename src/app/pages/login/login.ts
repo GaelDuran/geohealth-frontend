@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class Login {
 
-  API_BASE = 'http://localhost:4000';
+  API_BASE = 'https://geohealth-backend-a2i9.onrender.com';
 
   loginEmail = '';
   loginPassword = '';
