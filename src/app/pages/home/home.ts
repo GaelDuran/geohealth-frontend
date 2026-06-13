@@ -52,6 +52,8 @@ export class Home implements AfterViewInit {
     this.drawnItems = new L.FeatureGroup();
     this.map.addLayer(this.drawnItems);
 
+    console.log('Leaflet Draw:', (L as any).Draw);
+
     const drawControl = new (L as any).Control.Draw({
       edit: { featureGroup: this.drawnItems },
       draw: {
@@ -69,7 +71,7 @@ export class Home implements AfterViewInit {
 /* ===== ZONAS ===== */
 
 this.map.on(
-  (L as any).Draw.Event.CREATED,
+  'draw:created',
   async (e: any) => {
 
     const layer = e.layer;
@@ -94,8 +96,7 @@ this.map.on(
         {
           method: 'POST',
           headers: {
-            'Content-Type':
-              'application/json'
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify({
             name: 'Zona',
@@ -105,9 +106,7 @@ this.map.on(
       );
 
       this.loadZones();
-
     }
-
   }
 );
 
