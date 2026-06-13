@@ -1,0 +1,44 @@
+<div class="container">
+
+    <div class="box">
+        <h2>Iniciar Sesión</h2>
+
+        <input
+            type="email"
+            [(ngModel)]="loginEmail"
+            placeholder="Correo">
+
+        <input
+            type="password"
+            [(ngModel)]="loginPassword"
+            placeholder="Contraseña">
+
+        <button (click)="login()">
+            Entrar
+        </button>
+    </div>
+
+    <div class="box">
+        <h2>Registro</h2>
+
+        <input
+            type="text"
+            [(ngModel)]="registerName"
+            placeholder="Nombre">
+
+        <input
+            type="email"
+            [(ngModel)]="registerEmail"
+            placeholder="Correo">
+
+        <input
+            type="password"
+            [(ngModel)]="registerPassword"
+            placeholder="Contraseña">
+
+        <button (click)="register()">
+            Registrarse
+        </button>
+    </div>
+
+</div>

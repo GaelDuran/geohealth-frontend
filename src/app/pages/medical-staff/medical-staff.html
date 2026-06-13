@@ -1,0 +1,87 @@
+<app-navbar></app-navbar>
+<section class="panel">
+
+  <h1>Médicos</h1>
+
+  <form (ngSubmit)="saveDoctor()">
+
+    <input
+      type="text"
+      [(ngModel)]="name"
+      name="name"
+      placeholder="Nombre"
+      required
+    >
+
+    <input
+      type="text"
+      [(ngModel)]="phone"
+      name="phone"
+      placeholder="Teléfono"
+      required
+    >
+
+    <select
+      [(ngModel)]="specialty"
+      name="specialty"
+      required
+    >
+
+      <option value="">
+        Selecciona especialidad
+      </option>
+
+      <option *ngFor="let s of specialties" [value]="s._id">
+        {{ s.name }}
+      </option>
+
+    </select>
+
+    <button type="submit">
+      {{ editingId ? 'Actualizar' : 'Guardar' }}
+    </button>
+
+  </form>
+
+</section>
+
+<section class="table-wrapper">
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Teléfono</th>
+        <th>Especialidad</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr *ngFor="let d of doctors">
+
+        <td>{{ d.name }}</td>
+        <td>{{ d.phone }}</td>
+        <td>{{ d.specialty?.name }}</td>
+
+        <td>
+
+          <button (click)="editDoctor(d)">
+            Editar
+          </button>
+
+          <button (click)="deleteDoctor(d._id)">
+            Eliminar
+          </button>
+
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</section>

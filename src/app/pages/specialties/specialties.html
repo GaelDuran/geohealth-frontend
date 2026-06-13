@@ -1,0 +1,70 @@
+<app-navbar></app-navbar>
+
+<section class="panel">
+
+  <h1>Especialidades Médicas</h1>
+
+  <form (ngSubmit)="saveSpecialty()">
+
+    <input
+      type="text"
+      [(ngModel)]="name"
+      name="name"
+      placeholder="Nombre de la especialidad"
+      required
+    >
+
+    <input
+      type="text"
+      [(ngModel)]="description"
+      name="description"
+      placeholder="Descripción"
+      required
+    >
+
+    <button type="submit">
+      {{ editingId ? 'Actualizar' : 'Guardar' }}
+    </button>
+
+  </form>
+
+</section>
+
+<section class="table-wrapper">
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr *ngFor="let s of specialties">
+
+        <td>{{ s.name }}</td>
+        <td>{{ s.description }}</td>
+
+        <td>
+
+          <button (click)="editSpecialty(s)">
+            Editar
+          </button>
+
+          <button (click)="deleteSpecialty(s._id)">
+            Eliminar
+          </button>
+
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</section>

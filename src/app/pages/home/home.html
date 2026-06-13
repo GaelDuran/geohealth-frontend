@@ -1,0 +1,134 @@
+<app-navbar></app-navbar>
+
+<section class="hero">
+
+    <h1>
+        Sistema Georreferenciado de Salud
+    </h1>
+
+    <p>
+        Gestión de centros médicos,
+        especialidades,
+        médicos y zonas de atención.
+    </p>
+
+</section>
+
+<section class="stats">
+
+    <div class="stat-card">
+        <h2>{{ totalPlaces }}</h2>
+        <p>Centros</p>
+    </div>
+
+    <div class="stat-card">
+        <h2>{{ totalZones }}</h2>
+        <p>Zonas</p>
+    </div>
+
+    <div class="stat-card">
+        <h2>{{ totalDoctors }}</h2>
+        <p>Médicos</p>
+    </div>
+
+    <div class="stat-card">
+        <h2>{{ totalSpecialties }}</h2>
+        <p>Especialidades</p>
+    </div>
+
+</section>
+
+<div id="map"></div>
+
+<section class="panel">
+
+    <form (ngSubmit)="savePlace()">
+
+        <input
+            type="text"
+            [(ngModel)]="placeName"
+            name="placeName"
+            placeholder="Nombre del centro"
+            required
+        >
+
+        <input
+            type="text"
+            [(ngModel)]="placeDescription"
+            name="placeDescription"
+            placeholder="Descripción"
+            required
+        >
+
+        <button type="submit">
+            Guardar Centro
+        </button>
+
+    </form>
+
+</section>
+
+<section class="table-wrapper">
+
+    <input
+        type="text"
+        placeholder="Buscar centro de salud..."
+        [(ngModel)]="searchText"
+        (input)="searchPlaces()"
+    />
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Latitud</th>
+                <th>Longitud</th>
+                <th>Acciones</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @for(place of places; track place._id){
+
+                <tr>
+
+                    <td>{{ place.name }}</td>
+
+                    <td>{{ place.description }}</td>
+
+                    <td>
+                        {{ place.location.coordinates[1] }}
+                    </td>
+
+                    <td>
+                        {{ place.location.coordinates[0] }}
+                    </td>
+
+                    <td>
+
+                        <button
+                            (click)="editPlace(place)">
+                            Editar
+                        </button>
+
+                        <button
+                            (click)="deletePlace(place._id)">
+                            Eliminar
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            }
+
+        </tbody>
+
+    </table>
+
+</section>
